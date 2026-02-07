@@ -7,7 +7,7 @@ logo: "/assets/images/logo.svg"
 
 # Theme
 remote_theme: "mmistakes/minimal-mistakes"
-minimal_mistakes_skin: "dark"
+minimal_mistakes_skin: "air"
 
 plugins:
   - jekyll-include-cache
