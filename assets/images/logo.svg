@@ -1,14 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="120" viewBox="0 0 420 120" role="img" aria-label="A bit about AI">
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="140" viewBox="0 0 520 140" role="img" aria-label="A bit about AI">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#7c3aed"/>
-      <stop offset="1" stop-color="#22c55e"/>
+      <stop offset="0.55" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#60a5fa"/>
     </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.7 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect x="0" y="0" width="420" height="120" rx="22" fill="#0b1020"/>
-  <circle cx="66" cy="60" r="26" fill="url(#g)" opacity="0.95"/>
-  <circle cx="86" cy="42" r="6" fill="#0b1020" opacity="0.9"/>
-  <circle cx="54" cy="74" r="5" fill="#0b1020" opacity="0.9"/>
-  <text x="120" y="54" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="28" font-weight="700" fill="#eef2ff">A bit about AI</text>
-  <text x="120" y="84" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="14" font-weight="500" fill="#a5b4fc">Practical DS & AI, engineered for products</text>
+
+  <!-- backdrop pill -->
+  <rect x="0" y="0" width="520" height="140" rx="26" fill="#0b1020"/>
+
+  <!-- logo mark: stylized 'a' + circuit -->
+  <g transform="translate(34,24)">
+    <!-- glow -->
+    <circle cx="46" cy="46" r="34" fill="url(#g)" opacity="0.35" filter="url(#soft)"/>
+
+    <!-- outer ring -->
+    <circle cx="46" cy="46" r="34" fill="none" stroke="url(#g)" stroke-width="6" opacity="0.95"/>
+
+    <!-- inner 'a' -->
+    <path d="M46 26c-12 0-22 10-22 22 0 12 10 22 22 22 8 0 15-4 19-10v10h9V48c0-12-10-22-22-22zm0 12c6 0 10 4 10 10s-4 10-10 10-10-4-10-10 4-10 10-10z" fill="#eef2ff" opacity="0.98"/>
+
+    <!-- circuit nodes -->
+    <g stroke="rgba(165,180,252,0.85)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+      <path d="M80 46h22"/>
+      <path d="M46 80v18"/>
+      <path d="M18 30l-14-12"/>
+    </g>
+    <g fill="url(#g)" opacity="0.95">
+      <circle cx="104" cy="46" r="6"/>
+      <circle cx="46" cy="104" r="6"/>
+      <circle cx="4" cy="18" r="6"/>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <g transform="translate(140,40)">
+    <text x="0" y="28" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="34" font-weight="800" fill="#eef2ff" letter-spacing="-0.02em">abitaboutai</text>
+    <text x="0" y="58" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="14" font-weight="600" fill="rgba(165,180,252,0.9)">Practical DS &amp; AI for real products</text>
+  </g>
 </svg>
