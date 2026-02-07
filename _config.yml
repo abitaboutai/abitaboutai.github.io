@@ -1,7 +1,9 @@
-title: "Bomber Blog"
-description: "Practical data science and AI — engineered for real products."
-url: ""
+title: "A bit about AI"
+description: "Decision-useful writing for data science & AI teams — long-context, RAG, agents, evaluation, and cost."
+url: "https://abitaboutai.github.io"
 baseurl: ""
+
+logo: "/assets/images/logo.svg"
 
 # Theme
 remote_theme: "mmistakes/minimal-mistakes"
