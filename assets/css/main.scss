@@ -53,33 +53,21 @@
   float: none;
 }
 
-// The theme's TOC lives in .sidebar__right; we reposition it as a left rail.
-.layout--single.wide .sidebar__right {
-  position: sticky;
-  top: 90px;
-  max-height: calc(100vh - 110px);
-  overflow: auto;
-  width: 280px;
-  margin-right: 22px;
-}
-
-@media (min-width: 64em) {
-  .layout--single.wide .page {
-    display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
-    column-gap: 28px;
-    align-items: start;
+// The theme's TOC lives in .sidebar__right inside the content column.
+// We pin it to the left on large screens so it doesn't "hang" in the middle.
+@media (min-width: 80em) {
+  .layout--single.wide .sidebar__right.sticky {
+    position: fixed;
+    left: max(16px, calc((100vw - 1320px)/2));
+    top: 110px;
+    width: 280px;
+    max-height: calc(100vh - 140px);
+    overflow: auto;
+    z-index: 50;
   }
 
   .layout--single.wide .page__inner-wrap {
-    grid-column: 2;
-    max-width: 980px;
-    margin: 0 auto;
-  }
-
-  .layout--single.wide .sidebar__right {
-    grid-column: 1;
-    margin: 0;
+    margin-left: 320px;
   }
 }
 
@@ -88,20 +76,17 @@
   border-radius: 14px;
 }
 
-// Collapsible TOC styling
-.toc details {
+// TOC styling (we keep theme's generated TOC; just make the box nicer)
+.toc {
   border: 1px solid rgba(2,6,23,0.10);
   border-radius: 14px;
   padding: 0.75rem 0.9rem;
   background: rgba(255,255,255,0.92);
 }
 
-.toc summary {
-  cursor: pointer;
+.toc .nav__title {
   font-weight: 800;
 }
-
-.toc summary::-webkit-details-marker { display: none; }
 
 // Reading progress bar
 .reading-progress {
