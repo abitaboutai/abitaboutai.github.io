@@ -60,14 +60,14 @@
     position: fixed;
     left: max(16px, calc((100vw - 1320px)/2));
     top: 110px;
-    width: 280px;
+    width: 300px;
     max-height: calc(100vh - 140px);
     overflow: auto;
     z-index: 50;
   }
 
   .layout--single.wide .page__inner-wrap {
-    margin-left: 320px;
+    margin-left: 340px;
   }
 }
 
@@ -77,16 +77,27 @@
 }
 
 // TOC styling (we keep theme's generated TOC; just make the box nicer)
-.toc {
+.toc, .toc-auto {
   border: 1px solid rgba(2,6,23,0.10);
   border-radius: 14px;
   padding: 0.75rem 0.9rem;
   background: rgba(255,255,255,0.92);
 }
 
-.toc .nav__title {
+.toc-auto summary {
+  cursor: pointer;
   font-weight: 800;
+  list-style: none;
 }
+
+.toc-auto summary::-webkit-details-marker { display: none; }
+
+.toc-auto__menu {
+  margin: 0.75rem 0 0;
+  padding-left: 1rem;
+}
+
+.toc-auto__h3 { margin-left: 0.75rem; font-size: 0.95em; opacity: 0.95; }
 
 // Reading progress bar
 .reading-progress {
