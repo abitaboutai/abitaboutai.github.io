@@ -1,7 +1,7 @@
 ---
 title: "Budgeting and Planning LLM Spend in an Enterprise (Vendor‑Neutral)"
 date: 2026-02-07
-categories: [llm, finops]
+categories: [llm]
 tags: [budgeting, enterprise, rag, agents, efficiency]
 ---
 
@@ -16,6 +16,8 @@ This guide shows how to budget LLM spend like an enterprise capability: **foreca
 4) Build a FinOps operating loop: shared ownership, showback, anomaly response.
 
 ---
+
+![Enterprise LLM spend: the 4 buckets](/assets/images/llm-cost-buckets.svg)
 
 ## 1) The enterprise cost model (4 buckets)
 
@@ -85,6 +87,8 @@ Then convert to:
 > Don’t spreadsheet your way out of benchmarking. Measure throughput with representative prompts. (Serving efficiency matters more than intuition.)
 
 ---
+
+![Vendor-neutral unit economics: base vs incident](/assets/images/llm-units-example.svg)
 
 ## 4) Worked example (vendor-neutral)
 
@@ -180,6 +184,8 @@ The FinOps Framework emphasizes shared ownership, measurement, and iterative mat
 **CFO-friendly framing:** these are not “model upgrades.” They are **margin improvements** on an enterprise capability.
 
 ---
+
+![A pragmatic 30-day rollout plan](/assets/images/llm-rollout-30d.svg)
 
 ## 7) 30-day rollout plan
 

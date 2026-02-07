@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="30 day rollout plan">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="420" rx="28" fill="#0b1020"/>
+  <text x="56" y="78" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="30" font-weight="800" fill="#eef2ff">A pragmatic 30‑day rollout</text>
+  <text x="56" y="112" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="16" font-weight="500" fill="rgba(165,180,252,0.9)">Instrument → baseline → release discipline → efficiency sprint.</text>
+
+  <g transform="translate(56,150)">
+    <rect width="260" height="210" rx="18" fill="#111b35" stroke="rgba(165,180,252,0.25)"/>
+    <text x="20" y="46" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="800" fill="#eef2ff">Week 1</text>
+    <text x="20" y="76" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="14" font-weight="500" fill="rgba(165,180,252,0.9)">Visibility + limits</text>
+    <rect x="20" y="98" width="220" height="10" rx="5" fill="url(#g)" opacity="0.8"/>
+    <text x="20" y="138" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Log tokens/context/retries</text>
+    <text x="20" y="164" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Add caps (ctx/steps)</text>
+    <text x="20" y="190" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Tag requests for showback</text>
+  </g>
+
+  <g transform="translate(332,150)">
+    <rect width="260" height="210" rx="18" fill="#111b35" stroke="rgba(165,180,252,0.25)"/>
+    <text x="20" y="46" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="800" fill="#eef2ff">Week 2</text>
+    <text x="20" y="76" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="14" font-weight="500" fill="rgba(165,180,252,0.9)">Baselines + scenarios</text>
+    <rect x="20" y="98" width="220" height="10" rx="5" fill="url(#g)" opacity="0.8"/>
+    <text x="20" y="138" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Base/high/incident profiles</text>
+    <text x="20" y="164" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Benchmark throughput</text>
+    <text x="20" y="190" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Cost per success baseline</text>
+  </g>
+
+  <g transform="translate(608,150)">
+    <rect width="260" height="210" rx="18" fill="#111b35" stroke="rgba(165,180,252,0.25)"/>
+    <text x="20" y="46" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="800" fill="#eef2ff">Week 3</text>
+    <text x="20" y="76" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="14" font-weight="500" fill="rgba(165,180,252,0.9)">Release discipline</text>
+    <rect x="20" y="98" width="220" height="10" rx="5" fill="url(#g)" opacity="0.8"/>
+    <text x="20" y="138" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Canary + ramp + rollback</text>
+    <text x="20" y="164" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Anomaly triggers</text>
+    <text x="20" y="190" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Regression eval set</text>
+  </g>
+
+  <g transform="translate(884,150)">
+    <rect width="260" height="210" rx="18" fill="#111b35" stroke="rgba(165,180,252,0.25)"/>
+    <text x="20" y="46" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="800" fill="#eef2ff">Week 4</text>
+    <text x="20" y="76" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="14" font-weight="500" fill="rgba(165,180,252,0.9)">Efficiency sprint</text>
+    <rect x="20" y="98" width="220" height="10" rx="5" fill="url(#g)" opacity="0.8"/>
+    <text x="20" y="138" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Reduce prompt bloat</text>
+    <text x="20" y="164" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Serving throughput upgrades</text>
+    <text x="20" y="190" font-size="13" fill="rgba(165,180,252,0.9)" font-family="ui-sans-serif,system-ui">• Pilot spec decode/quant</text>
+  </g>
+</svg>

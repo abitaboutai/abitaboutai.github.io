@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-label="LLM cost model: four buckets">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="520" rx="28" fill="#0b1020"/>
+  <text x="56" y="78" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="30" font-weight="800" fill="#eef2ff">Enterprise LLM spend: the 4 buckets</text>
+  <text x="56" y="112" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="16" font-weight="500" fill="rgba(165,180,252,0.9)">Budgeting improves when you split variable usage from fixed capacity and ops overhead.</text>
+
+  <g transform="translate(56,150)">
+    <rect width="520" height="140" rx="18" fill="#111b35" stroke="rgba(165,180,252,0.25)"/>
+    <rect x="18" y="18" width="40" height="40" rx="12" fill="url(#g)" opacity="0.95"/>
+    <text x="72" y="44" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="20" font-weight="800" fill="#eef2ff">A) Variable inference</text>
+    <text x="18" y="82" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="15" font-weight="500" fill="rgba(165,180,252,0.9)">Tokens, decoding, retries, agent steps.</text>
+  </g>
+
+  <g transform="translate(624,150)">
+    <rect width="520" height="140" rx="18" fill="#111b35" stroke="rgba(165,180,252,0.25)"/>
+    <rect x="18" y="18" width="40" height="40" rx="12" fill="url(#g)" opacity="0.95"/>
+    <text x="72" y="44" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="20" font-weight="800" fill="#eef2ff">B) Fixed serving capacity</text>
+    <text x="18" y="82" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="15" font-weight="500" fill="rgba(165,180,252,0.9)">Fleet + headroom for latency SLOs and KV-cache pressure.</text>
+  </g>
+
+  <g transform="translate(56,310)">
+    <rect width="520" height="140" rx="18" fill="#111b35" stroke="rgba(165,180,252,0.25)"/>
+    <rect x="18" y="18" width="40" height="40" rx="12" fill="url(#g)" opacity="0.95"/>
+    <text x="72" y="44" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="20" font-weight="800" fill="#eef2ff">C) Retrieval & data (RAG)</text>
+    <text x="18" y="82" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="15" font-weight="500" fill="rgba(165,180,252,0.9)">Embeddings, vector DB, reranking, prompt inflation.</text>
+  </g>
+
+  <g transform="translate(624,310)">
+    <rect width="520" height="140" rx="18" fill="#111b35" stroke="rgba(165,180,252,0.25)"/>
+    <rect x="18" y="18" width="40" height="40" rx="12" fill="url(#g)" opacity="0.95"/>
+    <text x="72" y="44" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="20" font-weight="800" fill="#eef2ff">D) Human & process</text>
+    <text x="18" y="82" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="15" font-weight="500" fill="rgba(165,180,252,0.9)">Evals, review queues, incidents, governance.</text>
+  </g>
+</svg>

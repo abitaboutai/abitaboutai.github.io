@@ -8,32 +8,32 @@ header:
   actions:
     - label: "Read the first post"
       url: /llm/budgeting-and-planning-llm-spend-in-an-enterprise/
-    - label: "Browse all posts"
-      url: /categories/
+    - label: "Browse reads"
+      url: /reads/
 excerpt: "Decision-useful writing for data science & AI teams — long-context, self-hosted RAG, agents, evaluation, and cost."
 intro: 
   - excerpt: "**A bit about AI** is a practical blog for builders and decision makers shipping AI features. Expect clear mental models, realistic tradeoffs, and implementation hints—without vendor fluff."
 feature_row:
-  - image_path: /assets/images/favicon.svg
-    alt: "Builders"
-    title: "For builders"
-    excerpt: "Playbooks, failure modes, and implementation details you can apply this sprint."
-    url: /categories/
-    btn_label: "Browse posts"
+  - image_path: /assets/images/reads.svg
+    alt: "Reads"
+    title: "Reads"
+    excerpt: "Essays, playbooks, and decision memos for shipping AI."
+    url: /reads/
+    btn_label: "Browse reads"
     btn_class: "btn--primary"
-  - image_path: /assets/images/favicon.svg
-    alt: "Product & leadership"
-    title: "For product & leadership"
-    excerpt: "Budgeting, governance, and rollout patterns that keep reliability and spend under control."
-    url: /llm/budgeting-and-planning-llm-spend-in-an-enterprise/
-    btn_label: "Start here"
+  - image_path: /assets/images/projects.svg
+    alt: "Projects"
+    title: "Projects"
+    excerpt: "Small, reproducible builds with code, tradeoffs, and results."
+    url: /projects/
+    btn_label: "View projects"
     btn_class: "btn--primary"
-  - image_path: /assets/images/favicon.svg
-    alt: "Paper to Product"
-    title: "Paper → Product"
-    excerpt: "Short briefs that translate high-attention papers into shippable capabilities."
-    url: /categories/
-    btn_label: "Coming next"
+  - image_path: /assets/images/papers.svg
+    alt: "Paper summaries"
+    title: "Paper summaries"
+    excerpt: "Short briefs that translate papers into shippable features."
+    url: /paper-summaries/
+    btn_label: "See summaries"
     btn_class: "btn--primary"
 ---
 
