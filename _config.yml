@@ -1,0 +1,38 @@
+title: "Bomber Blog"
+description: "Practical data science and AI — engineered for real products."
+url: ""
+baseurl: ""
+
+# Theme
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "dark"
+
+plugins:
+  - jekyll-include-cache
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: false
+      read_time: true
+      comments: false
+      share: true
+      related: true
+
+# Site settings
+markdown: kramdown
+permalink: /:categories/:title/
+
+include:
+  - _pages
+
+# Build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
