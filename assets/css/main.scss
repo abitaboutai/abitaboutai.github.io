@@ -110,9 +110,10 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 6px;
   z-index: 9999;
-  background: rgba(2,6,23,0.08);
+  background: rgba(2,6,23,0.10);
+  box-shadow: 0 2px 10px rgba(2,6,23,0.25);
 }
 
 .reading-progress__bar {
