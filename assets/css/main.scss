@@ -43,6 +43,20 @@
   margin-top: 0.15rem;
 }
 
+// Reduce side whitespace on posts (wider reading column)
+.layout--single .page__inner-wrap {
+  max-width: 1180px;
+}
+
+.layout--single .page__content {
+  max-width: 980px;
+}
+
+// Make images breathe without forcing narrow text
+.page__content img {
+  border-radius: 14px;
+}
+
 // Callout section
 .home-callout {
   margin: 2rem 0;
