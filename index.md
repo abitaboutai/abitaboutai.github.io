@@ -39,6 +39,8 @@ feature_row:
 
 {% include feature_row %}
 
+{% include dynamic_ascii.html %}
+
 <div class="home-callout">
   <strong>Start here:</strong> <a href="/llm/budgeting-and-planning-llm-spend-in-an-enterprise/">Budgeting and Planning LLM Spend in an Enterprise (Vendor‑Neutral)</a>
   <br/>

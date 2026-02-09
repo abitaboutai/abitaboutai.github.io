@@ -1,0 +1,73 @@
+<div class="dynamic-ascii" aria-label="Dynamic ASCII art">
+  <pre id="dynamic-ascii-pre" class="dynamic-ascii__pre"></pre>
+  <div class="dynamic-ascii__meta">
+    <small>Generative ASCII (client-side)</small>
+  </div>
+</div>
+
+<script>
+(function () {
+  const pre = document.getElementById('dynamic-ascii-pre');
+  if (!pre) return;
+
+  // Deterministic-ish seed per page load
+  let t = Math.floor(Date.now() / 1000);
+
+  function mulberry32(a) {
+    return function() {
+      let x = a += 0x6D2B79F5;
+      x = Math.imul(x ^ (x >>> 15), x | 1);
+      x ^= x + Math.imul(x ^ (x >>> 7), x | 61);
+      return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+    }
+  }
+
+  function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
+
+  function render(n) {
+    // n in [0,1)
+    const width = 44;
+    const height = 9;
+
+    const energy = clamp(Math.floor(n * 21), 0, 20);
+    const bars = '█'.repeat(energy) + '·'.repeat(20 - energy);
+    const mood = n < 0.25 ? 'idle' : n < 0.5 ? 'warming up' : n < 0.75 ? 'focused' : 'overclock';
+
+    const frameTop = '┌' + '─'.repeat(width) + '┐';
+    const frameBot = '└' + '─'.repeat(width) + '┘';
+
+    const lines = [];
+    lines.push(frameTop);
+    lines.push('│ ' + 'A bit about AI — signal generator'.padEnd(width - 1) + '│');
+    lines.push('│ ' + (`mood: ${mood}`).padEnd(width - 1) + '│');
+    lines.push('│ ' + (`rng : ${n.toFixed(6)}`).padEnd(width - 1) + '│');
+    lines.push('│ ' + (`lvl : [${bars}]`).padEnd(width - 1) + '│');
+
+    // a tiny sparkline-ish row
+    const rng = mulberry32(Math.floor(n * 1e9) ^ 0xA5A5A5A5);
+    let spark = '';
+    const chars = ' .:-=+*#%@';
+    for (let i = 0; i < 32; i++) spark += chars[Math.floor(rng() * chars.length)];
+    lines.push('│ ' + (`sig : ${spark}`).padEnd(width - 1) + '│');
+
+    // a little "creature" that shifts
+    const x = clamp(Math.floor(n * 18), 0, 18);
+    const creature = ' '.repeat(x) + '(•_•)';
+    lines.push('│ ' + creature.padEnd(width - 1) + '│');
+
+    lines.push(frameBot);
+    return lines.join('\n');
+  }
+
+  function tick() {
+    // change seed each tick; keeps it "dynamic"
+    t += 5;
+    const rng = mulberry32(t ^ 0xC0FFEE);
+    const n = rng();
+    pre.textContent = render(n);
+  }
+
+  tick();
+  setInterval(tick, 5000);
+})();
+</script>
