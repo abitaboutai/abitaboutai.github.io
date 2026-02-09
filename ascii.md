@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /ascii/
+permalink: /
 title: ""
 ---
 
@@ -50,8 +50,9 @@ title: ""
     <pre id="dynamic-ascii-pre" class="ascii-splash__pre">Loading…</pre>
 
     <div class="ascii-splash__cta">
-      <a class="btn btn--primary" href="/">Enter the blog</a>
+      <a class="btn btn--primary" href="/home/">Enter the blog</a>
       <a class="btn" href="/reads/">Browse reads</a>
+      <a class="btn" href="/home/">Skip splash</a>
     </div>
     <div class="ascii-splash__hint">Generative ASCII — updates every 5 seconds.</div>
   </div>

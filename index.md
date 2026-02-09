@@ -1,6 +1,6 @@
 ---
 layout: splash
-permalink: /
+permalink: /home/
 header:
   overlay_color: "#0b1020"
   overlay_filter: "0.55"
