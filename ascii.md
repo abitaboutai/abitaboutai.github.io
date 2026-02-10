@@ -76,42 +76,114 @@ title: ""
 
   function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
 
-  function render(n) {
-    const width = 58;
-    const energy = clamp(Math.floor(n * 31), 0, 30);
-    const bars = '█'.repeat(energy) + '·'.repeat(30 - energy);
-    const mood = n < 0.25 ? 'idle' : n < 0.5 ? 'warming up' : n < 0.75 ? 'focused' : 'overclock';
+  function timeTheme(now) {
+    const h = now.getHours();
+    if (h >= 5 && h < 10) return { name: 'dawn', sky: ['.', '·', '*'], sun: '☼' };
+    if (h >= 10 && h < 17) return { name: 'day', sky: [' ', ' ', '·'], sun: '☀' };
+    if (h >= 17 && h < 20) return { name: 'sunset', sky: ['·', '.', '*'], sun: '◐' };
+    return { name: 'night', sky: ['·', '.', '*'], sun: '☾' };
+  }
+
+  function renderSkyline(n, now) {
+    const theme = timeTheme(now);
+
+    const width = 64;
+    const innerW = width - 2;
+
+    const rng = mulberry32((Math.floor(n * 1e9) ^ (now.getHours() << 16) ^ now.getDate()) >>> 0);
+
+    // Sky rows
+    const skyRows = 6;
+    const sky = [];
+    for (let r = 0; r < skyRows; r++) {
+      let row = '';
+      for (let i = 0; i < innerW; i++) {
+        const p = rng();
+        const ch = p < (theme.name === 'day' ? 0.01 : 0.05)
+          ? theme.sky[Math.floor(rng() * theme.sky.length)]
+          : ' ';
+        row += ch;
+      }
+      sky.push(row);
+    }
+
+    // Place sun/moon
+    const orbX = clamp(Math.floor(rng() * (innerW - 2)) + 1, 1, innerW - 2);
+    const orbY = clamp(Math.floor(rng() * 2), 0, 2);
+    sky[orbY] = sky[orbY].slice(0, orbX) + theme.sun + sky[orbY].slice(orbX + 1);
+
+    // Simple satellite at night
+    if (theme.name === 'night' && rng() < 0.6) {
+      const satX = clamp(Math.floor(rng() * (innerW - 6)) + 1, 1, innerW - 6);
+      const satY = clamp(1 + Math.floor(rng() * 2), 1, 2);
+      const sat = '-o-';
+      sky[satY] = sky[satY].slice(0, satX) + sat + sky[satY].slice(satX + sat.length);
+    }
+
+    // Buildings
+    const groundRows = 7;
+    const heights = Array.from({ length: innerW }, () => 0);
+    let x = 0;
+    while (x < innerW) {
+      const bW = clamp(2 + Math.floor(rng() * 6), 2, 6);
+      const hBase = theme.name === 'day' ? 2 : 3;
+      const bH = clamp(hBase + Math.floor(rng() * 6), 2, 8);
+      for (let i = x; i < Math.min(innerW, x + bW); i++) heights[i] = bH;
+      x += bW;
+    }
+
+    const buildings = [];
+    for (let r = groundRows; r >= 1; r--) {
+      let row = '';
+      for (let i = 0; i < innerW; i++) {
+        if (heights[i] >= r) {
+          // windows
+          const litProb = theme.name === 'night' ? 0.35 : theme.name === 'dawn' || theme.name === 'sunset' ? 0.22 : 0.08;
+          const isWindow = (r % 2 === 0) && (i % 2 === 0);
+          if (isWindow && rng() < litProb) row += '▣';
+          else row += '█';
+        } else {
+          row += ' ';
+        }
+      }
+      buildings.push(row);
+    }
+
+    // Street line
+    const street = '─'.repeat(innerW);
+
+    // HUD
+    const tag = `AI skyline / ${theme.name}`;
+    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const energy = clamp(Math.floor(n * 21), 0, 20);
+    const bars = '█'.repeat(energy) + '·'.repeat(20 - energy);
 
     const frameTop = '┌' + '─'.repeat(width) + '┐';
     const frameBot = '└' + '─'.repeat(width) + '┘';
 
     const lines = [];
     lines.push(frameTop);
-    lines.push('│ ' + 'A BIT ABOUT AI  //  ascii splash'.padEnd(width - 1) + '│');
-    lines.push('│ ' + (`mood: ${mood}`).padEnd(width - 1) + '│');
-    lines.push('│ ' + (`rng : ${n.toFixed(8)}`).padEnd(width - 1) + '│');
-    lines.push('│ ' + (`lvl : [${bars}]`).padEnd(width - 1) + '│');
+    lines.push('│ ' + 'A BIT ABOUT AI'.padEnd(width - 1) + '│');
+    lines.push('│ ' + (tag + '  ' + time).padEnd(width - 1) + '│');
+    lines.push('│ ' + (`signal: [${bars}]`).padEnd(width - 1) + '│');
+    lines.push('│' + ' '.repeat(width) + '│');
 
-    const rng = mulberry32(Math.floor(n * 1e9) ^ 0xA5A5A5A5);
-    let spark = '';
-    const chars = ' .:-=+*#%@';
-    for (let i = 0; i < 44; i++) spark += chars[Math.floor(rng() * chars.length)];
-    lines.push('│ ' + (`sig : ${spark}`).padEnd(width - 1) + '│');
+    for (const row of sky) lines.push('│ ' + row.padEnd(innerW) + ' │');
+    for (const row of buildings) lines.push('│ ' + row.padEnd(innerW) + ' │');
+    lines.push('│ ' + street + ' │');
 
-    const x = clamp(Math.floor(n * 24), 0, 24);
-    const creature = ' '.repeat(x) + '(•_•)  ~';
-    lines.push('│ ' + creature.padEnd(width - 1) + '│');
-
-    // footer line
-    lines.push('│ ' + 'press enter: click “Enter the blog” ↓'.padEnd(width - 1) + '│');
+    lines.push('│' + ' '.repeat(width) + '│');
+    lines.push('│ ' + 'Click “Enter the blog” to continue ↓'.padEnd(width - 1) + '│');
     lines.push(frameBot);
+
     return lines.join('\n');
   }
 
   function tick() {
     t += 5;
     const rng = mulberry32(t ^ 0xC0FFEE);
-    pre.textContent = render(rng());
+    const now = new Date();
+    pre.textContent = renderSkyline(rng(), now);
   }
 
   tick();
